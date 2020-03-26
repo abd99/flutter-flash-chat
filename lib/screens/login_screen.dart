@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
-              child: Padding(
+        child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -73,11 +73,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       final user = await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
                       if (user != null) {
-                        Navigator.pushNamed(context, ChatScreen.id);
+                        Navigator.popAndPushNamed(context, ChatScreen.id);
                       }
                       setState(() {
-                      showSpinner = false;
-                    });
+                        showSpinner = false;
+                      });
                     } catch (e) {}
                   },
                   buttonText: 'Log In',
