@@ -91,7 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 onPressed: () {
                   Navigator.pushNamed(context, LoginScreen.id);
                 },
-                textString: 'Log In',
+                buttonText: 'Log In',
               ),
             ),
             Hero(
@@ -101,7 +101,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 onPressed: () {
                   Navigator.pushNamed(context, RegistrationScreen.id);
                 },
-                textString: 'Register',
+                buttonText: 'Register',
               ),
             ),
           ],
