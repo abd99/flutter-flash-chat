@@ -6,6 +6,7 @@ import 'package:flutter_flash_chat/components/message_bubble.dart';
 import '../constants.dart';
 
 final _firestore = Firestore.instance;
+FirebaseUser loggedInUser;
 
 class ChatScreen extends StatefulWidget {
   static const String id = '/chat';
@@ -16,7 +17,6 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  FirebaseUser loggedInUser;
   String messageText;
   List messages;
 
@@ -127,9 +127,12 @@ class MessagesStream extends StatelessWidget {
           for (var item in messages) {
             final String messageText = item.data['text'];
             final String messageSender = item.data['sender'];
+            final currentUser = loggedInUser.email;
+
             messageBubbles.add(MessageBubble(
               text: messageText,
               sender: messageSender,
+              isMe: currentUser == messageSender,
             ));
           }
           return Expanded(
