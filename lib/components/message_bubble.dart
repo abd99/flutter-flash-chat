@@ -14,14 +14,17 @@ class MessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment:
             isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             sender,
-            style: TextStyle(fontSize: 12.0, color: Colors.black54),
+            style: TextStyle(fontSize: 12.0, color: Colors.grey),
+          ),
+          SizedBox(
+            height: 4.0,
           ),
           Material(
             borderRadius: isMe
@@ -36,7 +39,9 @@ class MessageBubble extends StatelessWidget {
                     bottomRight: Radius.circular(18.0),
                   ),
             elevation: 4.0,
-            color: isMe ? Colors.lightBlueAccent : Colors.white,
+            color: isMe
+                ? Theme.of(context).accentColor.withOpacity(0.4)
+                : Colors.grey[400],
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: 12.0,
@@ -46,7 +51,7 @@ class MessageBubble extends StatelessWidget {
                 text,
                 style: TextStyle(
                   fontSize: 16.0,
-                  color: isMe ? Colors.white : Colors.black54,
+                  color: isMe ? Colors.white : Colors.black,
                 ),
               ),
             ),

@@ -28,7 +28,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
 
     animation =
-        ColorTween(begin: Colors.red, end: Colors.white).animate(controller);
+        ColorTween(begin: Colors.red, end: Colors.black87).animate(controller);
 
     controller.forward();
 

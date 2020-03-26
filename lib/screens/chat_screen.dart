@@ -53,7 +53,9 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
+        backgroundColor: Colors.black87,
         leading: null,
         actions: <Widget>[
           IconButton(
@@ -64,7 +66,6 @@ class _ChatScreenState extends State<ChatScreen> {
               }),
         ],
         title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
       ),
       body: SafeArea(
         child: Column(
@@ -96,7 +97,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                     child: Text(
                       'Send',
-                      style: kSendButtonTextStyle,
+                      style: kSendButtonTextStyle.copyWith(
+                        color: Theme.of(context).accentColor.withOpacity(0.4),
+                      ),
                     ),
                   ),
                 ],
@@ -117,12 +120,10 @@ class MessagesStream extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlue,
-            ),
+            child: CircularProgressIndicator(),
           );
         } else {
-          final messages = snapshot.data.documents;
+          final messages = snapshot.data.documents.reversed;
           List<MessageBubble> messageBubbles = [];
           for (var item in messages) {
             final String messageText = item.data['text'];
@@ -137,6 +138,7 @@ class MessagesStream extends StatelessWidget {
           }
           return Expanded(
             child: ListView(
+              reverse: true,
               padding: EdgeInsets.symmetric(
                 horizontal: 12.0,
                 vertical: 24.0,
