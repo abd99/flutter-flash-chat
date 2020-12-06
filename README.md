@@ -1,6 +1,6 @@
 # Flutter FlashChat
 
-A chatting app build using Flutter and Firebase
+A chatting app built using Flutter and Firebase
 
 Screencast:
 
